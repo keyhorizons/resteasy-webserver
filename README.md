@@ -62,6 +62,12 @@ The runtime for this program is provided by Node.js which is a JavaScript runtim
     "vendorName": "Adigas",
     "price": 400
     }</pre>
+* GET /dish
+    * List dish <br/>
+    `Set header "Set-Cookie"="email": "jv@jv.com"`
+* GET /vendor
+    * List vendors <br/>
+    `Set header "Set-Cookie"="email": "jv@jv.com"`
 * POST /cart
     * Add a product and quantity to cart<br/>
     <pre>
