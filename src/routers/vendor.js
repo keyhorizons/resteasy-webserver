@@ -16,12 +16,21 @@ router.post('/vendor', auth, async (req, res) => {
     }
 })
 
-// GET /vendor?name=true
-// router.get('/vendor', auth, async (req, res) => {
-//     const match = {}
-//     const sort = {}
+// GET /vendor?
+// GET /vendor?name=Adigas
+router.get('/vendor', auth, async (req, res) => {
+    const match ={}
+    if (req.query.name) {
+        match.name = req.query.name
+    }
 
-// })
+    try {
+        const vendors = await Vendor.find(match)
+        res.send(vendors)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
 
 
 module.exports = router

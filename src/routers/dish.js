@@ -16,13 +16,20 @@ router.post('/dish', auth, async (req, res) => {
     }
 })
 
-// GET /tasks?name=
-// GET /tasks?sortBy=price:desc
-// router.get('/dish', auth, async (req, res) => {
-//     const match = {}
-//     const sort = {}
+// GET /dish?
+// GET /dish?name=Dosa
+router.get('/dish', auth, async (req, res) => {
+    const match ={}
+    if (req.query.name) {
+        match.name = req.query.name
+    }
 
-// })
-
+    try {
+        const dishes = await Dish.find(match)
+        res.send(dishes)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
 
 module.exports = router
