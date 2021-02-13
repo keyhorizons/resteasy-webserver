@@ -24,7 +24,7 @@ router.post('/cart', auth, async (req, res) => {
 router.get('/cart', auth, async (req, res) => {
     try {
         if (req.user.cart.items.length === 0) {
-            return res.send('Cart is empty!')
+            return res.send({'message': 'Cart is empty!'})
         }
         await req.user.populate('cart.items.productId').execPopulate()
         res.send(req.user.cart)
